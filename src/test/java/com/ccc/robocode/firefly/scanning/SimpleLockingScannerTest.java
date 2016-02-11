@@ -1,26 +1,23 @@
 package com.ccc.robocode.firefly.scanning;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
 import com.ccc.robocode.firefly.Firefly;
 import com.ccc.robocode.firefly.testutils.ScanEventUtil;
-import java.util.Random;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import robocode.HitWallEvent;
 import robocode.ScannedRobotEvent;
+
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SimpleLockingScannerTest {
     
-    @Mock
-    private Firefly robotMock; 
     @InjectMocks
     private SimpleLockingScanner instance;
+    @Mock
+    private Firefly robotMock;
     
     @Test
     public void testMainScan() {

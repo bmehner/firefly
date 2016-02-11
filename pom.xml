@@ -6,12 +6,7 @@
     <groupId>com.ccc.robocode</groupId>
     <artifactId>firefly</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
-    <properties>
-        <aspectj.version>1.8.0</aspectj.version>
-    </properties>
-
+    
     <build>
         <plugins>
             <plugin>

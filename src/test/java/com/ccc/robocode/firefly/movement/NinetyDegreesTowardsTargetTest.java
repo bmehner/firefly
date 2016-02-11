@@ -1,9 +1,7 @@
 package com.ccc.robocode.firefly.movement;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
 import com.ccc.robocode.firefly.Firefly;
+import com.ccc.robocode.firefly.testutils.TestConstants;
 import java.util.Random;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,15 +11,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import robocode.HitWallEvent;
 import robocode.ScannedRobotEvent;
 
+import static org.mockito.Mockito.*;
+
 @RunWith(MockitoJUnitRunner.class)
 public class NinetyDegreesTowardsTargetTest {
-    
-    private static final String TEST_NAME_ROBOT = "TestRobot";
-    private static final double TEST_ENERGY_ROBOT = 1;
-    private static final double TEST_BEARING_ROBOT_IN_RADIANS = 0;
-    private static final double TEST_DISTANCE_ROBOT_IN_PIXELS = 100;
-    private static final double TEST_HEADING_ROBOT = 1;
-    private static final double TEST_HEADING_VELOCITY_IN_PIXELS_PER_TURN = 0;
     
     @Mock
     private Firefly robotMock; 
@@ -33,7 +26,7 @@ public class NinetyDegreesTowardsTargetTest {
     @Test
     public void testMoveTargetInFront() {
         //given
-        ScannedRobotEvent event = createScannedRobotEvent(TEST_BEARING_ROBOT_IN_RADIANS);
+        ScannedRobotEvent event = createScannedRobotEvent(TestConstants.TEST_BEARING_ROBOT_IN_RADIANS);
         //when
         when(robotMock.getHeadingRadians()).thenReturn(0.0);
         instance.move(event);
@@ -109,7 +102,7 @@ public class NinetyDegreesTowardsTargetTest {
 
     @Test
     public void testDodgeBulletAhead() {
-        ScannedRobotEvent event = createScannedRobotEvent(TEST_BEARING_ROBOT_IN_RADIANS);
+        ScannedRobotEvent event = createScannedRobotEvent(TestConstants.TEST_BEARING_ROBOT_IN_RADIANS);
         // when
         when(randomMock.nextBoolean()).thenReturn(Boolean.TRUE);
         when(randomMock.nextDouble()).thenReturn(0.5);
@@ -120,7 +113,7 @@ public class NinetyDegreesTowardsTargetTest {
 
     @Test
     public void testDodgeBulletBack() {
-        ScannedRobotEvent event = createScannedRobotEvent(TEST_BEARING_ROBOT_IN_RADIANS);
+        ScannedRobotEvent event = createScannedRobotEvent(TestConstants.TEST_BEARING_ROBOT_IN_RADIANS);
         // when
         when(randomMock.nextBoolean()).thenReturn(Boolean.FALSE);
         when(randomMock.nextDouble()).thenReturn(0.5);
@@ -132,7 +125,7 @@ public class NinetyDegreesTowardsTargetTest {
     @Test
     public void testDodgeBulletDistanceTooSmall() {
         // given
-        ScannedRobotEvent event = createScannedRobotEvent(TEST_BEARING_ROBOT_IN_RADIANS);
+        ScannedRobotEvent event = createScannedRobotEvent(TestConstants.TEST_BEARING_ROBOT_IN_RADIANS);
         // when
         when(randomMock.nextBoolean()).thenReturn(Boolean.FALSE);
         when(randomMock.nextDouble()).thenReturn(0.1);
@@ -143,10 +136,10 @@ public class NinetyDegreesTowardsTargetTest {
     
     private ScannedRobotEvent createScannedRobotEvent(double bearingInRadians) {
         // given
-        ScannedRobotEvent event = new ScannedRobotEvent(TEST_NAME_ROBOT, 
-                TEST_ENERGY_ROBOT, bearingInRadians, 
-                TEST_DISTANCE_ROBOT_IN_PIXELS, TEST_HEADING_ROBOT, 
-                TEST_HEADING_VELOCITY_IN_PIXELS_PER_TURN, false);
+        ScannedRobotEvent event = new ScannedRobotEvent(TestConstants.TEST_NAME_ROBOT, 
+                TestConstants.TEST_ENERGY_ROBOT, bearingInRadians, 
+                TestConstants.TEST_DISTANCE_ROBOT_IN_PIXELS, TestConstants.TEST_HEADING_ROBOT, 
+                TestConstants.TEST_HEADING_VELOCITY_IN_PIXELS_PER_TURN, false);
         return event;
     }
 }
